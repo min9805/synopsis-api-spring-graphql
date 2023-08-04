@@ -1,0 +1,19 @@
+input PpvProductInput {
+    prd_prc_id: String
+    yn_prd_nscreen: String
+    prd_typ_cd: String
+    purc_pref_rank: String
+    possn_yn: String
+    epsd_id: String
+}
+
+input ContentScsInput {
+    response_format: String
+    ver: String
+    stb_id: String
+    hash_id: String
+    ui_name: String
+    sris_id: String
+    synopsis_type: String
+    ppv_products: [PpvProductInput]
+}

@@ -1,0 +1,9 @@
+input ContentSmdInput {
+    IF: String
+    m: String
+    stb_id: String
+    version_sw: String
+    mac_address: String
+    series_id: String
+    total_yn: String
+}

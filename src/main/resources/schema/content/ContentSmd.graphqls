@@ -1,0 +1,11 @@
+type ContentSmd {
+    result: String
+    reason: String
+    IF: String
+    like: String
+    dislike: String
+    updateDate: String
+    like_total: String
+    dislike_total: String
+    updateDate_total: String
+}
