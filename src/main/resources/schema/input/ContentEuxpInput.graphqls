@@ -1,0 +1,15 @@
+input ContentEuxpInput {
+    stb_id: String
+    IF: String
+    search_type: String
+    yn_recent: String
+    menu_stb_svc_id: String
+    epsd_id: String
+
+    Api_Key: String
+    Auth_Val: String
+    Client_ID: String
+    TimeStamp: String
+    Trace: String
+    UUID: String
+}

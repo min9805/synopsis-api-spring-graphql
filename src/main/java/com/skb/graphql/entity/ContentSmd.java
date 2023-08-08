@@ -14,16 +14,5 @@ public record ContentSmd(String result,
                          String like_total,
                          String dislike_total,
                          String updateDate_total) {
-	@JsonCreator
-	public void ContentScsInput(
-			@JsonProperty("response_format") String response_format,
-			@JsonProperty("ver") String ver,
-			@JsonProperty("stb_id") String stb_id,
-			@JsonProperty("hash_id") String hash_id,
-			@JsonProperty("ui_name") String ui_name,
-			@JsonProperty("sris_id") String sris_id,
-			@JsonProperty("synopsis_type") String synopsis_type,
-			@JsonProperty("ppv_products") List<SCSProductInput> ppv_products
-	) {
-	}
+
 }

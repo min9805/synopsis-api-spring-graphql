@@ -1,5 +1,5 @@
 type Query {
-    getContentSmd(input: ContentSmdInput!): ContentSmd
-    getContentScs(input: ContentScsInput!): ContentScs
-    getContentExup(input: ContentExupInput!): ContentExup
+    SMD(input: ContentSmdInput!): ContentSmd
+    SCS(input: ContentScsInput!): ContentScs
+    EUXP(input: ContentEuxpInput!): ContentEuxp
 }
