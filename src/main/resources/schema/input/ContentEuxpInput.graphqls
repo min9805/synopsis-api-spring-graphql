@@ -5,11 +5,4 @@ input ContentEuxpInput {
     yn_recent: String
     menu_stb_svc_id: String
     epsd_id: String
-
-    Api_Key: String
-    Auth_Val: String
-    Client_ID: String
-    TimeStamp: String
-    Trace: String
-    UUID: String
 }

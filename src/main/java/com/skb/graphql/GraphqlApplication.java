@@ -20,5 +20,5 @@ public class GraphqlApplication {
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-	
+
 }

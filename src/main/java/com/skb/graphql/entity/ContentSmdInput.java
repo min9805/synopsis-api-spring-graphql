@@ -13,5 +13,5 @@ public class ContentSmdInput {
 	private String mac_address;
 	private String series_id;
 	private String total_yn;
-	
+	private SynopsisInput synopsisInput;
 }

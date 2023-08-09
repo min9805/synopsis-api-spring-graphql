@@ -1,4 +1,17 @@
 type Query {
+    Synopsis(input: SynopsisInput): SynopsisContent
+}
+
+input SynopsisInput{
+    Api_Key: String
+    Auth_Val: String
+    Client_ID: String
+    TimeStamp: String
+    Trace: String
+    UUID: String
+}
+
+type SynopsisContent{
     SMD(input: ContentSmdInput!): ContentSmd
     SCS(input: ContentScsInput!): ContentScs
     EUXP(input: ContentEuxpInput!): ContentEuxp

@@ -13,9 +13,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Service
 public class EuxpApiService {
 	private final RestTemplate restTemplate;
+	private final HttpEntity<String> httpHeaders;
 
-	public EuxpApiService(RestTemplate restTemplate) {
+	public EuxpApiService(RestTemplate restTemplate, HttpEntity<String> httpHeaders) {
 		this.restTemplate = restTemplate;
+		this.httpHeaders = httpHeaders;
 	}
 
 	public ContentEuxp getContentEuxp(ContentEuxpInput input) {
@@ -36,20 +38,7 @@ public class EuxpApiService {
 				.queryParam("stb_id", "%7B660D7F55-89D8-11E5-ADAE-E5AC4F814417%7D")
 				.build();
 
-		// Construct the request body using the input data
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("Content-Type", "application/json;charset=utf-8");
-		headers.set("Api_Key", input.getApi_Key());
-		headers.set("Auth_Val", input.getAuth_Val());
-		headers.set("Client_ID", input.getClient_ID());
-		headers.set("TimeStamp", input.getTimeStamp());
-		headers.set("Trace", input.getTrace());
-		headers.set("UUID", input.getUUID());
-
-		// Create HttpEntity with headers
-		HttpEntity<String> entity = new HttpEntity<>(headers);
-
-		ResponseEntity<ContentEuxp> response = restTemplate.exchange(uriComponents.toString(), HttpMethod.GET, entity, ContentEuxp.class);
+		ResponseEntity<ContentEuxp> response = restTemplate.exchange(uriComponents.toString(), HttpMethod.GET, httpHeaders, ContentEuxp.class);
 
 
 		return response.getBody();
