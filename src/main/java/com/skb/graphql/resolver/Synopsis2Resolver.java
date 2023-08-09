@@ -1,55 +1,46 @@
 package com.skb.graphql.resolver;
 
-import com.netflix.graphql.dgs.*;
+import com.netflix.graphql.dgs.DgsComponent;
+import com.netflix.graphql.dgs.DgsData;
 import com.skb.graphql.entity.*;
 import com.skb.graphql.service.EuxpApiService;
 import com.skb.graphql.service.ScsApiService;
 import com.skb.graphql.service.SmdApiService;
 import graphql.schema.DataFetchingEnvironment;
 
+import java.io.UnsupportedEncodingException;
+
 @DgsComponent
-public class ContentResolver {
+public class Synopsis2Resolver {
 	private final SmdApiService smdApiService;
 	private final ScsApiService scsApiService;
 	private final EuxpApiService euxpApiService;
 
 
-	public ContentResolver(SmdApiService smdApiService, ScsApiService scsApiService, EuxpApiService euxpApiService) {
+	public Synopsis2Resolver(SmdApiService smdApiService, ScsApiService scsApiService, EuxpApiService euxpApiService) {
 		this.smdApiService = smdApiService;
 		this.scsApiService = scsApiService;
 		this.euxpApiService = euxpApiService;
 	}
 
-
-	@DgsData.List({
-			@DgsData(parentType = "Query", field = "Synopsis1"),
-			@DgsData(parentType = "Query", field = "Synopsis2")
-	})
-	public Synopsis getSynopsis(SynopsisInput input) {
-		Synopsis synopsis = new Synopsis();
-		synopsis.setInput(input);
-		return synopsis;
-	}
-
-
-	@DgsData(parentType = "SynopsisContent1", field = "SMD")
+	@DgsData(parentType = "SynopsisContent2", field = "SMD")
 	public ContentSmd getSMD(ContentSmdInput input, DataFetchingEnvironment environment) {
 		Synopsis synopsis = environment.getSource();
 		SynopsisInput synopsisInput = synopsis.getInput();
-		return smdApiService.getContentSmd(input);
+		return smdApiService.getContentSmd2(input, synopsisInput);
 	}
 
-	@DgsData(parentType = "SynopsisContent1", field = "SCS")
-	public ContentScs getSCS(ContentScsInput input, DataFetchingEnvironment environment) {
+	@DgsData(parentType = "SynopsisContent2", field = "SCS")
+	public ContentScs getSCS(ContentScsInput input, DataFetchingEnvironment environment) throws UnsupportedEncodingException {
 		Synopsis synopsis = environment.getSource();
 		SynopsisInput synopsisInput = synopsis.getInput();
-		return scsApiService.getContentScs(input);
+		return scsApiService.getContentScs2(input, synopsisInput);
 	}
 
-	@DgsData(parentType = "SynopsisContent1", field = "EUXP")
+	@DgsData(parentType = "SynopsisContent2", field = "EUXP")
 	public ContentEuxp getEUXP(ContentEuxpInput input, DataFetchingEnvironment environment) {
 		Synopsis synopsis = environment.getSource();
 		SynopsisInput synopsisInput = synopsis.getInput();
-		return euxpApiService.getContentEuxp(input);
+		return euxpApiService.getContentEuxp2(input, synopsisInput);
 	}
 }

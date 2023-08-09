@@ -1,0 +1,195 @@
+type ViewPage {
+    type: SynopsisType
+    banners: SynopsisBanner
+    title: ConntentsTitle
+    comment: ContentsComment
+    details: ContentsDetail
+    contentsAdditional: ContentsAdditional
+    userPreference: UserContentsPreference
+    episodeList: CotentsEpisodeList
+    purchaseInfo: PurchaseInfo
+    playInfo: PlayInfo
+}
+
+enum SynopsisType {
+    SHORTS
+    SEASON
+}
+
+type SynopsisBanner {
+    imageBanner: SynopsisImageBanner
+    textBanner: SynopsisTextBanner
+    plccBanner: SynopsisPlccBanner
+}
+
+type ContentsTitle {
+    imageTitle: ContentsImageTitle
+    textTitle: ContentsTextTitle
+}
+
+type ContentsComment {
+    comment: String
+    AIComment: String
+}
+
+type ContentsDetail {
+    metaInfo: MetaInfo
+    summary: String
+    castInfos: [Cast]
+    prizeInfos: [Prize]
+}
+
+type ContentsAdditional {
+    stillCut: [StillCut]
+    similarContents: SimilarContents
+}
+
+type UserContentsPreference {
+    likeInfo: LikeInfo,
+    bookmark: Boolean
+}
+
+type ContentsEpisodeList {
+    list: [ContentsEpisode]
+}
+
+type PurchaseInfo {
+    freeProducts: [FreeProduct]
+    purchasedProducts: [PurchasedProduct]
+    purchasableProducts: [PurchasableProduct]
+}
+
+type PlayInfo {
+    mainPlay:
+    mainPreviewPlay: MainPreviewPlay
+    aiHighlightPlay: AIHighlightPlay
+    trailerPlay: TrailerPlay
+    cornerPlays: [CornerPlay]
+    specialPlays: [SpecialPlay]
+}
+
+type OceanDateAlarm {
+    type: OceanDateAlarmType
+    dDay: Int
+}
+
+type ContentsServiceAlarm {
+    type: ServiceAlarmType
+    date: String
+}
+
+type SynopsisImageBanner {
+    imagePath: String
+    callTypeCode: String
+    callUrl: String
+    vasId: String
+    vasServiceId: String
+}
+
+type SynopsisTextBanner {
+    text: String
+    callTypeCode: String
+    callUrl: String
+    vasId: String
+    vasServiceId: String
+}
+
+type SynopsisPlccBanner {
+    imagePath: String
+    callTypeCode: String
+    callUrl: String
+    vasId: String
+    vasServiceId: String
+}
+
+type ContentsImageTitle {
+    isDark: Boolean
+    imagePath: String
+}
+
+type ContentsTextTitle {
+    text: String
+}
+
+type MetaInfo {
+    isNew: Boolean
+    isMasterpiece: Boolean
+    isBtvPopular: Boolean
+    isMultiLang: Boolean
+    isDubbing: Boolean
+    isRemastered: Boolean
+    isPrize: Boolean
+    isBroadcasting: Boolean
+    sound: String
+    btvReview: String
+    watchaReview: String
+    openYear: String
+    broadcastingDate: String
+    watchLevel: String
+    runningTime: String
+    resolution: String
+    subtitle: String
+    heroImg: String
+}
+
+type Cast {
+    birth: String
+    imagePath: String
+    id: String
+    actorName: String
+    castingName: String
+    roleCode: String
+    roleName: String
+}
+
+type Prize {
+    name: String
+    description: String
+    year: Number
+}
+
+type StillCut {
+    imagePath: String
+}
+
+type SimilarContents {
+    callId: String
+}
+
+enum LikeInfo {
+    NONE
+    LIKE
+    DISLIKE
+}
+
+type ContentsEpisode {
+    imagePath: String
+    episodeNumber: Number
+    watchedProgress: Number
+    isNotBroadcasted: Boolean
+}
+
+interface Product {
+    productTypeCode: String
+    episodeId: String
+    episodeResolutionId: String
+    discountTypeCode: String
+    languageCaptionTypeCode: String
+    isNscreen: Boolean
+    isPossession: Boolean
+    isPpmFreeJoin: Boolean
+    ppmGridIconImagePath: String
+    ppmProductName: String
+    productPriceId: String
+    productPriceVat: Int
+    salePrice: Int
+    salePriceVat: Int
+    purchasePreferenceRank: String
+    purchasedWatchedCount: String
+    resolutionTypeCode: String
+    isUsed: Boolean
+    isReservation: Boolean
+}
+
+type FreeProduct implements Prodcut {
+}

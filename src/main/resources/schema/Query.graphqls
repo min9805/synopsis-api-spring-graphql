@@ -1,17 +1,27 @@
 type Query {
-    Synopsis(input: SynopsisInput): SynopsisContent
+    Synopsis1: SynopsisContent1
+    Synopsis2(input: SynopsisInput!): SynopsisContent2
 }
 
 input SynopsisInput{
-    Api_Key: String
-    Auth_Val: String
-    Client_ID: String
-    TimeStamp: String
-    Trace: String
-    UUID: String
+    stb_id: String
+    menu_stb_svc_id: String
+    version_sw: String
+    mac_address: String
+    hash_id: String
+
+    epsd_id: String
+    series_id: String
+    search_type: String
 }
 
-type SynopsisContent{
+type SynopsisContent1{
+    SMD(input: ContentSmdInput!): ContentSmd
+    SCS(input: ContentScsInput!): ContentScs
+    EUXP(input: ContentEuxpInput!): ContentEuxp
+}
+
+type SynopsisContent2{
     SMD(input: ContentSmdInput!): ContentSmd
     SCS(input: ContentScsInput!): ContentScs
     EUXP(input: ContentEuxpInput!): ContentEuxp
