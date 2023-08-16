@@ -1,10 +1,8 @@
-package com.skb.graphql.entity;
+package com.skb.graphql.entity.input;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class ContentEuxpInput {
 	private String IF;
 	private String stb_id;
@@ -13,7 +11,7 @@ public class ContentEuxpInput {
 	private String menu_stb_svc_id;
 	private String epsd_id;
 
-	
+
 	private String Api_Key;
 	private String Auth_Val;
 	private String Client_ID;

@@ -1,8 +1,9 @@
 package com.skb.graphql.service;
 
 import com.skb.graphql.entity.ContentEuxp;
-import com.skb.graphql.entity.ContentEuxpInput;
-import com.skb.graphql.entity.SynopsisInput;
+import com.skb.graphql.entity.input.ContentEuxpInput;
+import com.skb.graphql.entity.input.SynopsisInput;
+import com.skb.graphql.entity.input.SynopsisPageInput;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -69,5 +70,28 @@ public class EuxpApiService {
 
 
 		return response.getBody();
+	}
+
+	public String getEuxpViewPage(SynopsisPageInput input) {
+		DefaultUriBuilderFactory defaultUriBuilderFactory = new DefaultUriBuilderFactory();
+		defaultUriBuilderFactory.setEncodingMode(DefaultUriBuilderFactory.EncodingMode.NONE);
+
+		restTemplate.setUriTemplateHandler(defaultUriBuilderFactory);
+
+		String baseUrl = "https://agw-stg.sk-iptv.com:8087/euxp/v5/contents/synopsis";
+
+		UriComponents uriComponents = UriComponentsBuilder.fromUriString(baseUrl)
+				.queryParam("yn_recent", input.getLookupType())
+				.queryParam("IF", "IF-EUXP-010")
+
+				.queryParam("search_type", input.getSynopsisSearchType())
+				.queryParam("menu_stb_svc_id", input.getMenuStbServiceId())
+				.queryParam("epsd_id", input.getEpisodeId())
+				.queryParam("stb_id", input.getStbId())
+				.build();
+
+		String response = restTemplate.exchange(uriComponents.toString(), HttpMethod.GET, httpHeaders, String.class).getBody();
+
+		return response;
 	}
 }

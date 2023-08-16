@@ -1,0 +1,25 @@
+input SynopsisPageInput{
+    stbId: String
+    mac: String
+    hashId: String
+    menuStbServiceId: String
+    isInspect: Boolean
+    subscriberTypeCode: String
+    env: String
+    synopsisSearchType: String
+    seriesId: String
+    episodeId: String
+    lookupType: String
+    menuId: String
+    xImpressionType: String
+    profileId: String
+    profileTypeCode: String
+    deviceTypeCode: String
+    synopsisType: String
+    uiName: String
+    appTypeCode: String
+    includeOmniPPM: Boolean
+    includePpmFreeJoin: Boolean
+    ppsProducts: [PpsProductInput]
+    ppvProducts: [PpvProductInput]
+}

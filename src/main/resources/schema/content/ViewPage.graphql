@@ -1,84 +1,71 @@
 type ViewPage {
-    type: SynopsisType
-    banners: SynopsisBanner
-    title: ConntentsTitle
-    comment: ContentsComment
-    details: ContentsDetail
-    contentsAdditional: ContentsAdditional
-    userPreference: UserContentsPreference
-    episodeList: CotentsEpisodeList
-    purchaseInfo: PurchaseInfo
-    playInfo: PlayInfo
+    type: VP_SynopsisType
+    banners: VP_SynopsisBanner
+    title: VP_ContentsTitle
+    comment: VP_ContentsComment
+    details: VP_ContentsDetail
+    contentsAdditional: VP_ContentsAdditional
+    userPreference: VP_UserContentsPreference
+    episodeList: VP_ContentsEpisodeList
+    purchaseInfo: VP_PurchaseInfo
+    playInfo: VP_PlayInfo
 }
 
-enum SynopsisType {
+enum VP_SynopsisType {
     SHORTS
     SEASON
 }
 
-type SynopsisBanner {
-    imageBanner: SynopsisImageBanner
-    textBanner: SynopsisTextBanner
-    plccBanner: SynopsisPlccBanner
+type VP_SynopsisBanner {
+    imageBanner: VP_SynopsisImageBanner
+    textBanner: VP_SynopsisTextBanner
+    plccBanner: VP_SynopsisPlccBanner
 }
 
-type ContentsTitle {
-    imageTitle: ContentsImageTitle
-    textTitle: ContentsTextTitle
+type VP_ContentsTitle {
+    imageTitle: VP_ContentsImageTitle
+    textTitle: VP_ContentsTextTitle
 }
 
-type ContentsComment {
+type VP_ContentsComment {
     comment: String
     AIComment: String
 }
 
-type ContentsDetail {
-    metaInfo: MetaInfo
+type VP_ContentsDetail {
     summary: String
-    castInfos: [Cast]
-    prizeInfos: [Prize]
+    castInfos: [VP_Cast]
+    prizeInfos: [VP_Prize]
 }
 
-type ContentsAdditional {
-    stillCut: [StillCut]
-    similarContents: SimilarContents
+type VP_ContentsAdditional {
+    stillCut: [VP_StillCut]
+    similarContents: VP_SimilarContents
 }
 
-type UserContentsPreference {
-    likeInfo: LikeInfo,
+type VP_UserContentsPreference {
+    #    likeInfo: LikeInfo,
     bookmark: Boolean
 }
 
-type ContentsEpisodeList {
-    list: [ContentsEpisode]
+type VP_ContentsEpisodeList {
+    list: [VP_ContentsEpisode]
 }
 
-type PurchaseInfo {
-    freeProducts: [FreeProduct]
-    purchasedProducts: [PurchasedProduct]
-    purchasableProducts: [PurchasableProduct]
+type VP_PurchaseInfo {
+    products: [VP_Product_test]
 }
 
-type PlayInfo {
-    mainPlay:
-    mainPreviewPlay: MainPreviewPlay
-    aiHighlightPlay: AIHighlightPlay
-    trailerPlay: TrailerPlay
-    cornerPlays: [CornerPlay]
-    specialPlays: [SpecialPlay]
+type VP_PlayInfo {
+    mainPlay: VP_MainPlay
+    mainPreviewPlay: VP_MainPreviewPlay
+    aiHighlightPlay: VP_AIHighlightPlay
+    trailerPlay: VP_TrailerPlay
+    cornerPlays: [VP_CornerPlay]
+    specialPlays: [VP_SpecialPlay]
 }
 
-type OceanDateAlarm {
-    type: OceanDateAlarmType
-    dDay: Int
-}
-
-type ContentsServiceAlarm {
-    type: ServiceAlarmType
-    date: String
-}
-
-type SynopsisImageBanner {
+type VP_SynopsisImageBanner {
     imagePath: String
     callTypeCode: String
     callUrl: String
@@ -86,7 +73,7 @@ type SynopsisImageBanner {
     vasServiceId: String
 }
 
-type SynopsisTextBanner {
+type VP_SynopsisTextBanner {
     text: String
     callTypeCode: String
     callUrl: String
@@ -94,7 +81,7 @@ type SynopsisTextBanner {
     vasServiceId: String
 }
 
-type SynopsisPlccBanner {
+type VP_SynopsisPlccBanner {
     imagePath: String
     callTypeCode: String
     callUrl: String
@@ -102,37 +89,17 @@ type SynopsisPlccBanner {
     vasServiceId: String
 }
 
-type ContentsImageTitle {
+type VP_ContentsImageTitle {
     isDark: Boolean
     imagePath: String
 }
 
-type ContentsTextTitle {
+type VP_ContentsTextTitle {
     text: String
 }
 
-type MetaInfo {
-    isNew: Boolean
-    isMasterpiece: Boolean
-    isBtvPopular: Boolean
-    isMultiLang: Boolean
-    isDubbing: Boolean
-    isRemastered: Boolean
-    isPrize: Boolean
-    isBroadcasting: Boolean
-    sound: String
-    btvReview: String
-    watchaReview: String
-    openYear: String
-    broadcastingDate: String
-    watchLevel: String
-    runningTime: String
-    resolution: String
-    subtitle: String
-    heroImg: String
-}
 
-type Cast {
+type VP_Cast {
     birth: String
     imagePath: String
     id: String
@@ -142,34 +109,34 @@ type Cast {
     roleName: String
 }
 
-type Prize {
+type VP_Prize {
     name: String
     description: String
-    year: Number
+    year: Int
 }
 
-type StillCut {
+type VP_StillCut {
     imagePath: String
 }
 
-type SimilarContents {
+type VP_SimilarContents {
     callId: String
 }
 
-enum LikeInfo {
-    NONE
-    LIKE
-    DISLIKE
-}
+#enum LikeInfo {
+#    NONE
+#    LIKE
+#    DISLIKE
+#}
 
-type ContentsEpisode {
+type VP_ContentsEpisode {
     imagePath: String
-    episodeNumber: Number
-    watchedProgress: Number
-    isNotBroadcasted: Boolean
+    episodeNumber: Int
+    watchedProgress: String
+    isNotBroadcasted: String
 }
 
-interface Product {
+type VP_Product_test {
     productTypeCode: String
     episodeId: String
     episodeResolutionId: String
@@ -191,5 +158,46 @@ interface Product {
     isReservation: Boolean
 }
 
-type FreeProduct implements Prodcut {
+type VP_MainPlay {
+    episodeId: String
+    seriesId: String
+}
+
+type VP_MainPreviewPlay {
+    episodeId: String
+    seriesId: String
+    episodeResolutionId: String
+    startTime: Int
+    previewTime: Int
+    totalTime: Int
+}
+
+type VP_AIHighlightPlay {
+    episodeId: String
+    seriesId: String
+    startTime: Int
+    previewTime: Int
+}
+
+type VP_TrailerPlay {
+    episode_id: String
+    seriesId: String
+    productPriceId: String
+}
+
+type VP_CornerPlay {
+    cornerBottomName: String
+    cornerGroupName: String
+    cornerId: String
+    cornerName: String
+    episodeResolutionId: String
+    imagePath: String
+}
+
+type VP_SpecialPlay {
+    episodeId: String
+    episodeResolutionId: String
+    imagePath: String
+    productPriceId: String
+    title: String
 }

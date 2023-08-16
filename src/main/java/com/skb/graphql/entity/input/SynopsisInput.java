@@ -1,10 +1,8 @@
-package com.skb.graphql.entity;
+package com.skb.graphql.entity.input;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class SynopsisInput {
 	private String stb_id;
 	private String menu_stb_svc_id;

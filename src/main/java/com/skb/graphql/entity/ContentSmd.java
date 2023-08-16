@@ -1,10 +1,5 @@
 package com.skb.graphql.entity;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.util.List;
-
 public record ContentSmd(String result,
                          String reason,
                          String IF,

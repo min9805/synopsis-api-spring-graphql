@@ -1,4 +1,4 @@
-package com.skb.graphql.entity;
+package com.skb.graphql.entity.input;
 
 import lombok.Data;
 
@@ -16,7 +16,7 @@ public class ContentScsInput {
 	private List<PpvProduct> ppv_products;
 
 	@Data
-	static class PpvProduct {
+	class PpvProduct {
 		private String prd_prc_id;
 		private String yn_prd_nscreen;
 		private String prd_typ_cd;

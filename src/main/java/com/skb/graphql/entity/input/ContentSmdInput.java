@@ -1,10 +1,8 @@
-package com.skb.graphql.entity;
+package com.skb.graphql.entity.input;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class ContentSmdInput {
 	private String IF;
 	private String m;

@@ -1,8 +1,8 @@
 package com.skb.graphql.service;
 
-import com.skb.graphql.entity.ContentSmdInput;
+import com.skb.graphql.entity.input.ContentSmdInput;
 import com.skb.graphql.entity.ContentSmd;
-import com.skb.graphql.entity.SynopsisInput;
+import com.skb.graphql.entity.input.SynopsisInput;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

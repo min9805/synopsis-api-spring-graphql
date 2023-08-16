@@ -1,10 +1,9 @@
 package com.skb.graphql.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.skb.graphql.entity.input.SynopsisInput;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class Synopsis {
 	private ContentScs scs;
 	private ContentEuxp euxp;

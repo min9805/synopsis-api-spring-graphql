@@ -1,6 +1,7 @@
 type Query {
-    Synopsis1: SynopsisContent1
-    Synopsis2(input: SynopsisInput!): SynopsisContent2
+    synopsis1: SynopsisContent1
+    synopsis2(input: SynopsisInput!): SynopsisContent2
+    synopsisPage(input: SynopsisPageInput!):ViewPage
 }
 
 input SynopsisInput{

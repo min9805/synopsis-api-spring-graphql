@@ -7,6 +7,14 @@ input PpvProductInput {
     epsd_id: String
 }
 
+input PpsProductInput {
+    prd_prc_id: String
+    yn_prd_nscreen: String
+    prd_typ_cd: String
+    purc_pref_rank: String
+    possn_yn: String
+}
+
 input ContentScsInput {
     response_format: String
     ver: String

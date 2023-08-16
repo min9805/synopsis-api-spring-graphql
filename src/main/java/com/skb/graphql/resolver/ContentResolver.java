@@ -2,6 +2,10 @@ package com.skb.graphql.resolver;
 
 import com.netflix.graphql.dgs.*;
 import com.skb.graphql.entity.*;
+import com.skb.graphql.entity.input.ContentEuxpInput;
+import com.skb.graphql.entity.input.ContentScsInput;
+import com.skb.graphql.entity.input.ContentSmdInput;
+import com.skb.graphql.entity.input.SynopsisInput;
 import com.skb.graphql.service.EuxpApiService;
 import com.skb.graphql.service.ScsApiService;
 import com.skb.graphql.service.SmdApiService;
@@ -22,8 +26,8 @@ public class ContentResolver {
 
 
 	@DgsData.List({
-			@DgsData(parentType = "Query", field = "Synopsis1"),
-			@DgsData(parentType = "Query", field = "Synopsis2")
+			@DgsData(parentType = "Query", field = "synopsis1"),
+			@DgsData(parentType = "Query", field = "synopsis2")
 	})
 	public Synopsis getSynopsis(SynopsisInput input) {
 		Synopsis synopsis = new Synopsis();
