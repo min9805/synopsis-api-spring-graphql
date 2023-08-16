@@ -34,9 +34,8 @@ public class SynopsisPageResolver {
 
 	@DgsData(parentType = "Query", field = "synopsisPage")
 	public ViewPage getSynopsisPage(SynopsisPageInput input) throws JsonProcessingException {
-		ModelMapper modelMapper = new ModelMapper();
-
 		String exup = euxpApiService.getEuxpViewPage(input);
+		String smd = smdApiService.getSmdViewPage(input);
 
 		ObjectMapper objectMapper = new ObjectMapper();
 

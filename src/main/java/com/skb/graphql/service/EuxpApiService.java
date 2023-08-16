@@ -4,6 +4,7 @@ import com.skb.graphql.entity.ContentEuxp;
 import com.skb.graphql.entity.input.ContentEuxpInput;
 import com.skb.graphql.entity.input.SynopsisInput;
 import com.skb.graphql.entity.input.SynopsisPageInput;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -18,6 +19,10 @@ public class EuxpApiService {
 	private final RestTemplate restTemplate;
 	private final HttpEntity<String> httpHeaders;
 
+
+	@Value("${euxp.url}")
+	private String baseUrl;
+
 	public EuxpApiService(RestTemplate restTemplate, HttpEntity<String> httpHeaders) {
 		this.restTemplate = restTemplate;
 		this.httpHeaders = httpHeaders;
@@ -29,8 +34,6 @@ public class EuxpApiService {
 		defaultUriBuilderFactory.setEncodingMode(DefaultUriBuilderFactory.EncodingMode.NONE);
 
 		restTemplate.setUriTemplateHandler(defaultUriBuilderFactory);
-
-		String baseUrl = "https://agw-stg.sk-iptv.com:8087/euxp/v5/contents/synopsis";
 
 		UriComponents uriComponents = UriComponentsBuilder.fromUriString(baseUrl)
 				.queryParam("IF", input.getIF())
@@ -54,8 +57,6 @@ public class EuxpApiService {
 
 		restTemplate.setUriTemplateHandler(defaultUriBuilderFactory);
 
-		String baseUrl = "https://agw-stg.sk-iptv.com:8087/euxp/v5/contents/synopsis";
-
 		UriComponents uriComponents = UriComponentsBuilder.fromUriString(baseUrl)
 				.queryParam("yn_recent", input.getYn_recent())
 				.queryParam("IF", input.getIF())
@@ -73,12 +74,11 @@ public class EuxpApiService {
 	}
 
 	public String getEuxpViewPage(SynopsisPageInput input) {
+
 		DefaultUriBuilderFactory defaultUriBuilderFactory = new DefaultUriBuilderFactory();
 		defaultUriBuilderFactory.setEncodingMode(DefaultUriBuilderFactory.EncodingMode.NONE);
 
 		restTemplate.setUriTemplateHandler(defaultUriBuilderFactory);
-
-		String baseUrl = "https://agw-stg.sk-iptv.com:8087/euxp/v5/contents/synopsis";
 
 		UriComponents uriComponents = UriComponentsBuilder.fromUriString(baseUrl)
 				.queryParam("yn_recent", input.getLookupType())

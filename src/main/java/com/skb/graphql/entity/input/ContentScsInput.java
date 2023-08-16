@@ -16,7 +16,7 @@ public class ContentScsInput {
 	private List<PpvProduct> ppv_products;
 
 	@Data
-	class PpvProduct {
+	static class PpvProduct {
 		private String prd_prc_id;
 		private String yn_prd_nscreen;
 		private String prd_typ_cd;
