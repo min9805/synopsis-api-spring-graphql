@@ -1,21 +1,16 @@
 package com.skb.graphql.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.extern.jackson.Jacksonized;
 
 import java.util.List;
 
-enum VP_SynopsisType {
-	SHORTS,
-	SEASON
-}
-
 @Data
+@Builder
+@AllArgsConstructor
 public class ViewPage {
-	VP_SynopsisType type;
 	VP_SynopsisBanner banners;
 	VP_ContentsTitle title;
 	VP_ContentsComment comment;
@@ -27,26 +22,27 @@ public class ViewPage {
 	VP_PlayInfo playInfo;
 
 	@Data
+	@Builder
 	public static class VP_ContentsTitle {
 		private VP_ContentsImageTitle imageTitle;
-
 		private VP_ContentsTextTitle textTitle;
-
-		private String title;
 	}
 
 	@Data
+	@Builder
 	public static class VP_ContentsTextTitle {
 		private String text;
 	}
 
 	@Data
+	@Builder
 	public static class VP_ContentsImageTitle {
 		private Boolean isDark;
 		private String imagePath;
 	}
 
 	@Data
+	@Builder
 	public static class VP_SynopsisBanner {
 		private VP_SynopsisImageBanner imageBanner;
 		private VP_SynopsisTextBanner textBanner;
@@ -54,12 +50,14 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_ContentsComment {
 		private String comment;
 		private String AIComment;
 	}
 
 	@Data
+	@Builder
 	public static class VP_ContentsDetail {
 		private String summary;
 		private List<VP_Cast> castInfos;
@@ -67,27 +65,34 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_ContentsAdditional {
 		private List<VP_StillCut> stillCut;
 		private VP_SimilarContents similarContents;
 	}
 
+
 	@Data
+	@Builder
 	public static class VP_UserContentsPreference {
+		private VP_LikeInfo likeInfo;
 		private Boolean bookmark;
 	}
 
 	@Data
+	@Builder
 	public static class VP_ContentsEpisodeList {
 		private List<VP_ContentsEpisode> list;
 	}
 
 	@Data
+	@Builder
 	public static class VP_PurchaseInfo {
-		private List<VP_Product_test> products;
+		private List<VP_Product> products;
 	}
 
 	@Data
+	@Builder
 	public static class VP_PlayInfo {
 		private VP_MainPlay mainPlay;
 		private VP_MainPreviewPlay mainPreviewPlay;
@@ -98,6 +103,7 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_SynopsisImageBanner {
 		private String imagePath;
 		private String callTypeCode;
@@ -107,6 +113,7 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_SynopsisTextBanner {
 		private String text;
 		private String callTypeCode;
@@ -116,6 +123,7 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_SynopsisPlccBanner {
 		private String imagePath;
 		private String callTypeCode;
@@ -125,6 +133,7 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_Cast {
 		private String birth;
 		private String imagePath;
@@ -136,6 +145,7 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_Prize {
 		private String name;
 		private String description;
@@ -143,25 +153,39 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_StillCut {
 		private String imagePath;
 	}
 
 	@Data
+	@Builder
 	public static class VP_SimilarContents {
 		private String callId;
 	}
 
 	@Data
+	@Builder
+	public static class VP_LikeInfo {
+		private Integer dislikeTotal;
+		private Integer likeTotal;
+		private Integer like;
+		private Integer dislike;
+	}
+
+	@Data
+	@Builder
 	public static class VP_ContentsEpisode {
-		private String imagePath;
+		private String imagePathVertical;
+		private String imagePathHorizontal;
 		private Integer episodeNumber;
 		private String watchedProgress;
 		private String isNotBroadcasted;
 	}
 
 	@Data
-	public static class VP_Product_test {
+	@Builder
+	public static class VP_Product {
 		private String productTypeCode;
 		private String episodeId;
 		private String episodeResolutionId;
@@ -176,20 +200,22 @@ public class ViewPage {
 		private Integer productPriceVat;
 		private Integer salePrice;
 		private Integer salePriceVat;
-		private String purchasePreferenceRank;
-		private String purchasedWatchedCount;
+		private String purchasedWatchedCode;
+		private Integer purchasedWatchedCount;
 		private String resolutionTypeCode;
 		private Boolean isUsed;
 		private Boolean isReservation;
 	}
 
 	@Data
+	@Builder
 	public static class VP_MainPlay {
 		private String episodeId;
 		private String seriesId;
 	}
 
 	@Data
+	@Builder
 	public static class VP_MainPreviewPlay {
 		private String episodeId;
 		private String seriesId;
@@ -200,6 +226,7 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_AIHighlightPlay {
 		private String episodeId;
 		private String seriesId;
@@ -208,13 +235,15 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_TrailerPlay {
-		private String episode_id;
+		private String episodeId;
 		private String seriesId;
 		private String productPriceId;
 	}
 
 	@Data
+	@Builder
 	public static class VP_CornerPlay {
 		private String cornerBottomName;
 		private String cornerGroupName;
@@ -225,10 +254,12 @@ public class ViewPage {
 	}
 
 	@Data
+	@Builder
 	public static class VP_SpecialPlay {
 		private String episodeId;
 		private String episodeResolutionId;
 		private String imagePath;
 		private String productPriceId;
+		private String title;
 	}
 }

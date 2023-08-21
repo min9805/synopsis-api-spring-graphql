@@ -31,7 +31,7 @@ public class SynopsisPageInput {
 	private List<PpvProductInput> ppvProducts;
 
 	@Data
-	static class PpvProductInput {
+	public static class PpvProductInput {
 		private String prd_prc_id;
 		private String yn_prd_nscreen;
 		private String prd_typ_cd;

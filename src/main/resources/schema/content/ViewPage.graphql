@@ -44,7 +44,7 @@ type VP_ContentsAdditional {
 }
 
 type VP_UserContentsPreference {
-    #    likeInfo: LikeInfo,
+    likeInfo: VP_LikeInfo,
     bookmark: Boolean
 }
 
@@ -53,7 +53,7 @@ type VP_ContentsEpisodeList {
 }
 
 type VP_PurchaseInfo {
-    products: [VP_Product_test]
+    products: [VP_Product]
 }
 
 type VP_PlayInfo {
@@ -123,11 +123,12 @@ type VP_SimilarContents {
     callId: String
 }
 
-#enum LikeInfo {
-#    NONE
-#    LIKE
-#    DISLIKE
-#}
+type VP_LikeInfo {
+    dislikeTotal: String
+    likeTotal: String
+    dislike: String
+    like: String
+}
 
 type VP_ContentsEpisode {
     imagePath: String
@@ -136,7 +137,7 @@ type VP_ContentsEpisode {
     isNotBroadcasted: String
 }
 
-type VP_Product_test {
+type VP_Product {
     productTypeCode: String
     episodeId: String
     episodeResolutionId: String
@@ -151,7 +152,6 @@ type VP_Product_test {
     productPriceVat: Int
     salePrice: Int
     salePriceVat: Int
-    purchasePreferenceRank: String
     purchasedWatchedCount: String
     resolutionTypeCode: String
     isUsed: Boolean
@@ -180,7 +180,7 @@ type VP_AIHighlightPlay {
 }
 
 type VP_TrailerPlay {
-    episode_id: String
+    episodeId: String
     seriesId: String
     productPriceId: String
 }

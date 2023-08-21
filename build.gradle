@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.1.2'
     id 'io.spring.dependency-management' version '1.1.2'
+    id "com.netflix.dgs.codegen" version "5.12.4"
 }
 
 group = 'com.skb'
@@ -9,6 +10,12 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     sourceCompatibility = '17'
+}
+
+generateJava {
+    schemaPaths = ["graphql/src/main/resources/schema"] // List of directories containing schema files
+    packageName = 'com.skb.graphql' // The package name to use to generate sources
+    generateClientv2 = true // Enable generating the type safe query API
 }
 
 configurations {
@@ -27,7 +34,7 @@ dependencies {
     implementation "com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter"
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
     implementation 'org.modelmapper:modelmapper:2.4.4'
-    
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
